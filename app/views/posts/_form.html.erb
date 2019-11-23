@@ -23,7 +23,9 @@
 
   <div class="field">
     <%= form.label :photo %>
-    <%= form.text_field :photo, id: :post_photo %>
+    <%= form.file_field :photo, id: :post_photo %>
+    <span>Url</span>
+    <%= form.text_field :remote_photo_url, id: :remote_post_photo %>
   </div>
 
   <div class="actions">
