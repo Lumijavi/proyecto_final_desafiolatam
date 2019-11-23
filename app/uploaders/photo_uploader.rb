@@ -1,7 +1,8 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  process resize_to_fit: [1280,1280]
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -19,7 +20,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    "https://cdn.shopify.com/s/files/1/0322/6897/files/404-permalink.png?432866230176278629"
+    # "https://cdn.shopify.com/s/files/1/0322/6897/files/404-permalink.png?432866230176278629"
+    ActionController::Base.helpers.asset_path("404.png")
   end
 
   # Process files as they are uploaded:
@@ -30,9 +32,13 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+  version :postimg do
+    process resize_to_fit: [640, 640]
+  end
+
+  version :thumb do
+    process resize_to_fit: [200, 200]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

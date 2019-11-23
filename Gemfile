@@ -7,8 +7,10 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
-# User Carrierwave to manage upload of images
+# Use Carrierwave to manage upload of images
 gem 'carrierwave', '~> 2.0'
+# User Mini Magick to hanlde images versions
+gem 'mini_magick'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
