@@ -1,5 +1,9 @@
 {
   "name": "fechken_r5",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "fullcalendar": "^3.10.1",
+    "jquery": "^3.4.1",
+    "moment": "^2.24.0"
+  }
 }
