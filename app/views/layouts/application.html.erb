@@ -14,13 +14,7 @@
   <body>
     <%= render 'layouts/navbar' %>
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-      <p class="alert alert-primary"><%= alert %></p>
-    <% end %>
+    <%= render 'layouts/alerts' %>
 
     <div class="container mt-3">
       <%= yield %>
@@ -28,7 +22,10 @@
 
 
 
-    <%= render 'layouts/footer' %>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
