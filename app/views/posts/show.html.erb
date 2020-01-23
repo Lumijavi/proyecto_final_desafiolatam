@@ -1,17 +1,53 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="text-center">
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
+	<legend><h1><%= @post.title %></h1><%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-secondary' %></legend>
 
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @post.photo.postimg %>
-</p>
+	<div class="jumbotron">
+    <figure>
+      <%= image_tag @post.photo.postimg, class:'img-fluid' %>
+    </figure>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+	  <h5 class="text-justify"><%= @post.description %></h5>
+
+    <div class="text-right">
+      <small><strong>Publicado por:</strong> <%= @post.user.name %></small>
+    </div>
+
+
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="well well-sm">
+			<legend>Comentar:</legend>
+			<%= form_with(model: [@post, Comment.new], local: true, html: { class: 'form-horizontal' }) do |f| %>
+				<div class="form-group">
+					<div class="col-md-12">
+						<%= f.text_area :content, placeholder: 'Escribe tu comentario aquí...', class: 'form-control' %>
+					</div>
+				</div>
+				<%= f.submit 'Comentar', class: 'btn btn-primary container px-5' %>
+			<% end %>
+
+		</div>
+
+    </br>
+    <%= link_to 'Regresar', posts_path, class:'btn btn-outline-info' %>
+	</div>
+	<div class="col-md-8">
+		<% counter = 0 %>
+		<% @comments.each do |comment| %>
+			#<%= counter += 1 %>
+			<div class="well well-sm">
+				<strong><%= comment.user.name %>:</strong>
+				<br>
+				<%= comment.content %>
+				<div class="text-right">
+					<%# if can? :destroy, comment %>
+						<%= link_to 'Eliminar', post_comment_path(@post,comment), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-xs btn-danger' %>
+					<%# end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

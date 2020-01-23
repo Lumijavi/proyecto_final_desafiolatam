@@ -13,22 +13,27 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+    <%= form.text_field :title, id: :post_title, class:'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :post_description %>
+    <%= form.text_area :description, id: :post_description, class:'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.file_field :photo, id: :post_photo %>
-    <span>Url</span>
-    <%= form.text_field :remote_photo_url, id: :remote_post_photo %>
+  <div class="field form-row">
+    <div class="col">
+      <span>Photo Url</span>
+      <%= form.text_field :remote_photo_url, id: :remote_post_photo, class:'form-control' %>
+    </div>
+    <div class="col">
+      <%= form.label :photo %>
+      <%= form.file_field :photo, id: :post_photo, class:'form-control-file' %>
+    </div>
   </div>
 
+  </br></br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Publicar", class: 'btn btn-info container-fluid' %>
   </div>
 <% end %>
