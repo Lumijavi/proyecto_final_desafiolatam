@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :add_tag, :remove_tag]
 
   # GET /posts
   # GET /posts.json
@@ -11,6 +11,17 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = @post.comments
+  end
+
+  def add_tag
+    @post.tags << Tag.new(name: params[:name])
+    redirect_to post_path
+  end
+
+  def remove_tag
+    tag = Tag.find(params[:tag_id])
+    @post.tags.delete(tag)
+    redirect_to post_path
   end
 
   # GET /posts/new
@@ -71,6 +82,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :photo, :remote_photo_url)
+      params.require(:post).permit(:title, :description, :photo, :remote_photo_url,:name)
     end
 end
