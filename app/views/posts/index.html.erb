@@ -1,33 +1,43 @@
 <h1>Posts</h1>
 
-<div class="card-deck">
-  <% @posts.each do |post| %>
-    <div class="col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch py-2">
-      <div class="card">
-        <img src="<%= post.photo.postimg%>" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><strong><%= post.title %></strong></h5>
-          <p class="card-text"><%= post.description.truncate(180, separator: /\s/)%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <div><%# link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' %></div>
-            <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Post?' }, class:'btn btn-secondary' %></div>
-          </div>
-          <div>
-            <!-- poner tags acá -->
-            <% post.tags.each do |tag| %>
-              <small>#<%= tag.name %></small>
-            <% end %>
-          </div>
-          <div class="row">
-            <div class="col-7">
-              <small class="text-muted"><%=time_ago_in_words(post.created_at) %></small>
+<div id="paginator">
+      <%= paginate @posts %>
+</div>
+
+<div class="pages-posts">
+  <div class="card-deck">
+    <% @posts.each do |post| %>
+      <div class="col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch py-2">
+        <div class="card">
+          <img src="<%= post.photo.postimg%>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= post.title %></strong></h5>
+            <p class="card-text"><%= post.description.truncate(180, separator: /\s/)%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div><%# link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' %></div>
+              <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Post?' }, class:'btn btn-secondary' %></div>
             </div>
-            <div class="col-5">
-              <small class="text-muted">N° Comentarios: <%= post.comments.size %></small>
+            <div>
+              <!-- poner tags acá -->
+              <% post.tags.each do |tag| %>
+                <small>#<%= tag.name %></small>
+              <% end %>
+            </div>
+            <div class="row">
+              <div class="col-7">
+                <small class="text-muted"><%=time_ago_in_words(post.created_at) %></small>
+              </div>
+              <div class="col-5">
+                <small class="text-muted">N° Comentarios: <%= post.comments.size %></small>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div id="paginator">
+      <%= paginate @posts %>
 </div>
