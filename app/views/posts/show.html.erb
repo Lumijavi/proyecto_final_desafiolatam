@@ -3,7 +3,7 @@
 	<legend>
 		<h1><%= @post.title %></h1>
 		<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-secondary' %>
-		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %>
+		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Post?' }, class:'btn btn-secondary' %>
 	</legend>
 
 <div class="">
@@ -59,7 +59,7 @@
 				<%= comment.content %>
 				<div class="text-right">
 					<%# if can? :destroy, comment %>
-						<%= link_to 'Eliminar', post_comment_path(@post,comment), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-xs btn-danger' %>
+						<%= link_to 'Eliminar', post_comment_path(@post,comment), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-xs btn-danger' %>
 					<%# end %>
 				</div>
 			</div>

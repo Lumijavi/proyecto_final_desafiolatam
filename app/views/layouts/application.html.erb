@@ -14,7 +14,7 @@
   <body>
     <%= render 'layouts/navbar' %>
 
-    <%= render 'layouts/alerts' %>
+    <%= alertify_flash(wait: 10) %>
 
     <div class="container mt-5 pt-4">
       <%= yield %>

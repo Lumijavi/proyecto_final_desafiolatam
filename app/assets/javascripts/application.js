@@ -15,4 +15,6 @@
 //= require jquery/dist/jquery
 //= require moment/moment
 //= require fullcalendar/dist/fullcalendar
+//= require alertify
+//= require alertify/confirm-ujs
 //= require_tree .
