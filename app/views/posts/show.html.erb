@@ -1,6 +1,10 @@
 <div class="text-center">
 
-	<legend><h1><%= @post.title %></h1><%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-secondary' %></legend>
+	<legend>
+		<h1><%= @post.title %></h1>
+		<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-secondary' %>
+		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %>
+	</legend>
 
 <div class="">
 	<% @post.tags.each do |tag| %>

@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'sites/home'
+
+  get 'sites/aboutus'
+
   resources :tags
   resources :categories
   resources :comments
 
   devise_for :users, controllers: {
   registrations: 'users/registrations',
+  sessions: 'users/sessions',
   omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
@@ -17,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'posts#index'
+  root 'sites#home'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

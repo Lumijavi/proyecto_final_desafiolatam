@@ -1,6 +1,4 @@
-<h1>Noticias</h1>
-
-<%= link_to 'New Post', new_post_path, class:'btn btn-secondary mb-3' %>
+<h1>Posts</h1>
 
 <div class="card-deck">
   <% @posts.each do |post| %>
@@ -12,7 +10,7 @@
           <p class="card-text"><%= post.description.truncate(180, separator: /\s/)%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
           <div class="btn-group" role="group" aria-label="Basic example">
             <div><%# link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' %></div>
-            <div><%# link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %></div>
+            <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %></div>
           </div>
           <div>
             <!-- poner tags acá -->
@@ -33,5 +31,3 @@
     </div>
   <% end %>
 </div>
-
-<br>

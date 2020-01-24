@@ -12,12 +12,14 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar'%>
+
+    <div class="pt-5">
 
     <%= render 'layouts/alerts' %>
 
-    <div class="container mt-5 pt-4">
-      <%= yield %>
+    <%= yield %>
+
     </div>
 
     <footer>
