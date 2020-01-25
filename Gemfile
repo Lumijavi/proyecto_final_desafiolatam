@@ -9,8 +9,16 @@ end
 gem 'rails', '~> 5.1.7'
 # Use Carrierwave to manage upload of images
 gem 'carrierwave', '~> 2.0'
-# User Mini Magick to hanlde images versions
+# Use Mini Magick to hanlde images versions
 gem 'mini_magick'
+# Use Alertify to simplify alert messages
+gem 'alertifyjs-rails'
+# Use Kaminari to paginate
+gem 'kaminari'
+gem 'jquery-rails'
+gem 'bootstrap'
+# Use Summernote to add enriched text editor
+gem 'summernote-rails', '~> 0.8.12.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -33,11 +41,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'alertifyjs-rails'
-gem 'kaminari'
-gem 'jquery-rails'
-gem 'bootstrap'
-gem 'summernote-rails', '~> 0.8.12.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

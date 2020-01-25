@@ -12,8 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require jquery
 //= require jquery_ujs
+//= require jquery
 //= require popper
 //= require bootstrap
 //= require summernote/summernote-bs4.min
