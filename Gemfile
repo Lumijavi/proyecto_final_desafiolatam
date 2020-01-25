@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'alertifyjs-rails'
 gem 'kaminari'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'summernote-rails', '~> 0.8.12.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

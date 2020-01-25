@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'sites/home'
-
-  get 'sites/aboutus'
+  get 'nosotros', to: 'sites#aboutus'
+  get 'socios', to: 'sites#members'
 
   resources :tags
   resources :categories

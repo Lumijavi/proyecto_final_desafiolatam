@@ -7,4 +7,7 @@ class SitesController < ApplicationController
 
   def aboutus
   end
+
+  def members
+  end
 end

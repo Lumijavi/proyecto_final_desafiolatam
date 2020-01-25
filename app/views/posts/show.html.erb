@@ -3,7 +3,7 @@
 	<legend>
 		<h1><%= @post.title %></h1>
 		<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-secondary' %>
-		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Post?' }, class:'btn btn-secondary' %>
+		<%= link_to 'Destroy', @post, method: :delete, class:'btn btn-secondary' %>
 	</legend>
 
 <div class="">
@@ -22,7 +22,7 @@
       <%= image_tag @post.photo.postimg, class:'img-fluid' %>
     </figure>
 
-	  <h5 class="text-justify"><%= @post.description %></h5>
+	  <h5 class="text-justify"><%= @post.description.html_safe %></h5>
 
     <div class="text-right">
       <small><strong>Publicado por:</strong> <%= @post.user.name %></small>

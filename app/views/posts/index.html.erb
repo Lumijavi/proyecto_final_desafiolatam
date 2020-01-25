@@ -1,4 +1,4 @@
-<h1>Posts</h1>
+<h1>Noticias </h1>
 
 <div id="paginator">
       <%= paginate @posts %>
@@ -12,11 +12,7 @@
           <img src="<%= post.photo.postimg%>" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><strong><%= post.title %></strong></h5>
-            <p class="card-text"><%= post.description.truncate(180, separator: /\s/)%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <div><%# link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' %></div>
-              <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Post?' }, class:'btn btn-secondary' %></div>
-            </div>
+            <p class="card-text"><%= post.description.html_safe.truncate(180, separator: /\s/)%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
             <div>
               <!-- poner tags acá -->
               <% post.tags.each do |tag| %>
