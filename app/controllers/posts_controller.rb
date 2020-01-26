@@ -10,7 +10,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comments = @post.comments
+    @comments = @post.comments.order("created_at DESC").page(params[:page])
+    @posts = Post.order("created_at DESC").page(params[:page]).limit(3)
   end
 
   def add_tag

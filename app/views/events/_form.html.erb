@@ -11,37 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :event_title %>
+    <%= form.text_field :title, id: :event_title, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :event_description %>
+    <%= form.text_area :description, id: :event_description, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :photo %>
-    <%= form.text_field :photo, id: :event_photo %>
+    <%= form.text_field :photo, id: :event_photo, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :start %>
-    <%= form.datetime_select :start, id: :event_start %>
+    <%= form.datetime_select :start, id: :event_start, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :end %>
     <%= form.datetime_select :end, id: :event_end %>
   </div>
 
   <div class="field">
     <%= form.label :url %>
-    <%= form.text_field :url, id: :event_url %>
+    <%= form.text_field :url, id: :event_url, class:'form-control' %>
   </div>
 
+  </br></br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Publicar", class: 'btn btn-info container-fluid' %>
   </div>
 <% end %>

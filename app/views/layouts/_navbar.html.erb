@@ -42,17 +42,17 @@
     <ul class="navbar-nav ml-auto align-middle">
       <% if user_signed_in? %>
         <li class="nav-item active mr-3">
-          <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-outline-secondary' %>
+          <%= link_to 'Editar Perfil', edit_user_registration_path, class: 'btn btn-outline-secondary' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+          <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
         </li>
       <% else %>
         <li class="nav-item active mr-3">
           <%= link_to 'Acceder', new_user_session_path, class: 'btn btn-outline-secondary' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Suscribirse', new_user_registration_path, class: 'btn btn-primary' %>
+          <%= link_to 'Regístrate', new_user_registration_path, class: 'btn btn-primary' %>
         </li>
       <% end %>
     </ul>

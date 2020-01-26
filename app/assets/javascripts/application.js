@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
 //= require jquery_ujs
 //= require jquery
 //= require popper
@@ -19,7 +17,11 @@
 //= require summernote/summernote-bs4.min
 //= require summernote-init
 //= require moment/moment
+//= require moment-timezone-with-data
+//= require tempusdominus-bootstrap-4
 //= require fullcalendar/dist/fullcalendar
 //= require alertify
 //= require alertify/confirm-ujs
+//= require rails-ujs
+//= require turbolinks
 //= require_tree .

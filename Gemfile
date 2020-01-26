@@ -17,6 +17,7 @@ gem 'alertifyjs-rails'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'bootstrap'
+gem 'bootstrap4-datetime-picker-rails'
 # Use Summernote to add enriched text editor
 gem 'summernote-rails', '~> 0.8.12.0'
 # Use postgresql as the database for Active Record

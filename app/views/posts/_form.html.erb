@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, id: :post_title, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description, 'data-provider': :summernote %>
   </div>
 
-  <div class="field form-row">
+  <div class="form-group form-row">
     <div class="col">
       <span>Photo Url</span>
       <%= form.text_field :remote_photo_url, id: :remote_post_photo, class:'form-control' %>

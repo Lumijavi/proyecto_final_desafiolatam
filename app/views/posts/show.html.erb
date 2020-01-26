@@ -1,68 +1,112 @@
-<div class="text-center">
+<div class="container">
 
-	<legend>
-		<h1><%= @post.title %></h1>
-		<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-secondary' %>
-		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %>
-	</legend>
-
-<div class="">
-	<% @post.tags.each do |tag| %>
-		<a href="<%= remove_tag_post_path(@post, tag) %>"" data-method="delete"><span class="badge badge-pill badge-light"># <%= tag.name %>  <strong>X</strong> </span> </a>
-	<% end %>
-
-	<%= form_tag(add_tag_post_path(@post)) do %>
-		<%= label_tag :name, 'Agregar Tag:' %>
-		<%= text_field_tag "name" %>
-	<% end %>
-</div>
-
-	<div class="jumbotron">
-    <figure>
-      <%= image_tag @post.photo.postimg, class:'img-fluid' %>
-    </figure>
-
-	  <h5 class="text-justify"><%= @post.description.html_safe %></h5>
-
-    <div class="text-right">
-      <small><strong>Publicado por:</strong> <%= @post.user.name %></small>
-    </div>
-
-
-	</div>
-</div>
 <div class="row">
-	<div class="col-md-4">
-		<div class="well well-sm">
-			<legend>Comentar:</legend>
-			<%= form_with(model: [@post, Comment.new], local: true, html: { class: 'form-horizontal' }) do |f| %>
-				<div class="form-group">
-					<div class="col-md-12">
-						<%= f.text_area :content, placeholder: 'Escribe tu comentario aquí...', class: 'form-control' %>
-					</div>
+	<div class="col-sm-12 col-md-8">
+		<div>
+
+			<legend class="text-center">
+				<h1><%= @post.title %></h1>
+			</legend>
+
+			<div class="text-center">
+				<small>
+					<strong>Creado el:
+						<%= @post.created_at.strftime("%d-%m-%Y")%>
+						por
+						<%= @post.user.name %></strong>
+				</small>
+			</div>
+
+			<div class="row my-3">
+
+				<div class="col-4">
+					<% @post.tags.each do |tag| %>
+						<a href="<%= remove_tag_post_path(@post, tag) %>" " data-method=" delete"="delete"">
+							<span class="badge badge-pill badge-light">/ # <%= tag.name %> <strong>X</strong></span>
+						</a>
+					<% end %>
 				</div>
-				<%= f.submit 'Comentar', class: 'btn btn-primary container px-5' %>
-			<% end %>
+
+				<div class="col-4">
+					<%= form_tag(add_tag_post_path(@post)) do %>
+						<%= label_tag :name, 'Agregar Tag:' %>
+						<%= text_field_tag "name" %>
+					<% end %>
+				</div>
+
+				<div class="col-4">
+					<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-sm btn-secondary' %>
+					<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-secondary' %>
+				</div>
+
+			</div>
+
+		<div class="jumbotron">
+			<figure class="text-center mb-5">
+				<%= image_tag @post.photo.postimg, class:'img-fluid' %>
+			</figure>
+			<div class="container bg-light  p-5">
+					<%= @post.description.html_safe %>
+			</div>
+
 
 		</div>
 
-    </br>
-    <%= link_to 'Regresar', posts_path, class:'btn btn-outline-info' %>
 	</div>
-	<div class="col-md-8">
-		<% counter = 0 %>
-		<% @comments.each do |comment| %>
-			#<%= counter += 1 %>
-			<div class="well well-sm">
-				<strong><%= comment.user.name %>:</strong>
-				<br>
-				<%= comment.content %>
-				<div class="text-right">
-					<%# if can? :destroy, comment %>
-						<%= link_to 'Eliminar', post_comment_path(@post,comment), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-xs btn-danger' %>
-					<%# end %>
+
+		<div class="jumbotron p-3 row">
+			<div class="col-md-4">
+				<div class="card card-body bg-light">
+					<legend>Comentar:</legend>
+					<%= form_with(model: [@post, Comment.new], local: true, html: { class: 'form-horizontal' }) do |f| %>
+						<div class="form-group">
+							<div class="col-md-12">
+								<%= f.text_area :content, placeholder: 'Escribe tu comentario aquí...', class: 'form-control' %>
+							</div>
+						</div>
+					<%= f.submit 'Comentar', class: 'btn btn-primary container px-5' %>
+					<% end %>
+				</div>
+			</br>
+			<%= link_to 'Regresar', posts_path, class:'btn btn-outline-info' %>
+			</div>
+
+			<div class="col-md-8">
+				<% @comments.each do |comment| %>
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-9">
+									<p class="card-text">
+										<strong><%= comment.user.name %>:</strong>
+										<%= comment.content %></p>
+								</div>
+								<%# if can? :destroy, comment %>
+									<div class="col-3">
+										<%= link_to 'X Eliminar', post_comment_path(@post,comment), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-sm btn-danger' %>
+									</div>
+								<%# end %>
+							</div>
+						</div>
+						<div class="card-footer text-muted">
+							<small><%=time_ago_in_words(comment.updated_at) %></small>
+						</div>
+					</div>
+				<% end %>
+				<div id="paginator">
+					<%= paginate @comments %>
 				</div>
 			</div>
-		<% end %>
+		</div>
 	</div>
+
+	<div class="col-sm-12 col-md-4">
+		<%= render 'sidebar' %>
+	</div>
+</div>
+
+
+
+
+
 </div>

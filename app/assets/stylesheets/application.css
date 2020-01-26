@@ -14,6 +14,8 @@
  *= require alertify
  *= require alertify/default
  *= require alertify/bootstrap
+ *= require tempusdominus-bootstrap-4
  *= require_tree .
  *= require_self
  */
+@import "tempusdominus-bootstrap-4.css"
