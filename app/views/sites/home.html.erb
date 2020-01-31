@@ -19,7 +19,7 @@
           <img src="<%= post.photo.postimg%>" class="card-img-top" alt="...">
           <div class="card-body">
             <small class="text-primary"><%= post.category.name.upcase %></small>
-            
+
             <h5 class="card-title"><strong><%= post.title %></strong></h5>
             <p class="card-text"><%= strip_tags(post.description.html_safe.truncate(180, separator: /\s/))%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
             <div>
@@ -48,5 +48,31 @@
   </div>
 
 
+  <br>
+</div>
+
+<div class="container">
+  <h1>Próximos Eventos</h1>
+
+  <div class="card-deck">
+    <% @nextevents.each do |event| %>
+      <div class="col-md-12 col-lg-3 d-flex align-items-stretch py-2">
+        <div class="card">
+          <img src="<%= event.photo.postimg%>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <small class="text-primary"><%= event.category.name.upcase %></small>
+            <h5 class="card-title"><strong><%= link_to event.title, event, class:'stretched-link'%></strong></h5>
+            <small class="text-muted">
+              <strong>Fecha:
+                <%= event.start.strftime("%d-%m-%Y")%>
+              </strong>
+            </small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  </br>
   <br>
 </div>

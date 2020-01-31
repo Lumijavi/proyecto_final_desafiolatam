@@ -1,16 +1,18 @@
 class EventsController < ApplicationController
   #before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  
+
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
+    @nextevents = Event.where('start >= ?', Date.today).order(:start)
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @nextevents = Event.where('start >= ?', Date.today).order(:start)
   end
 
   # GET /events/new
@@ -29,7 +31,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to events_path, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -43,11 +45,14 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        flash.now[:notice] = "Event was successfully updated"
+        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

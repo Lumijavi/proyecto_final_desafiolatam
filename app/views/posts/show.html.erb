@@ -1,9 +1,6 @@
 <div class="container">
-<span>
-	<a href="<%= category_path %>">Noticias</a>
-	/
-	<a href="/categories/<%= @post.category.id %>"><%= @post.category.name %></a>
-</span>
+	<span>Categoría / <%= @post.category.name %> </span>
+
 <div class="row">
 	<div class="col-sm-12 col-md-8">
 		<div>
@@ -28,7 +25,7 @@
 						<!-- if  admin -->
 						<div class="col-4">
 							<% @post.tags.each do |tag| %>
-								<a href="<%= remove_tag_post_path(@post, tag) %>" "data-method="delete">
+								<a href="<%= remove_tag_post_path(@post, tag) %>" "" data-method="delete">
 									<span class="badge badge-pill badge-light">/ # <%= tag.name %> <strong>X</strong></span>
 								</a>
 							<% end %>

@@ -7,45 +7,18 @@
   <% end %>
 
 <div class="container">
-  <div id="calendar"></div>
+  <div class="row">
+  	<div class="col-sm-12 col-md-8">
+      <div id="calendar" data-token="<%= form_authenticity_token %>"></div>
+    </div>
+  	<div class="col-sm-12 col-md-4">
+      <%= render 'sidebar' %>
+    </div>
+  </div>
 </div>
 
   <%= render 'modal' %>
 
-  <script>
-    $('#calendar').fullCalendar({
-      events: '<%= events_path %>',
-      eventClick: function(calEvent, jsEvent, view) {
-        $('.modal').modal()
-      },
-      // limit editable attr with cancancan **
-      editable: true,
-      // limit editable attr with cancancan **
-      eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
-        if (!confirm(event.title + " fue movido al " + event.start.calendar() + "\n ¿Estás seguro de mover el evento a esta fecha?")) {
-          revertFunc();
-        }
-        $.ajax({
-          url: '/events/' + event.id,
-          type: 'PATCH',
-          dataType: 'html',
-          data: {event: {
-            start: event.start.format()},
-            authenticity_token: "<%= form_authenticity_token %>"
-          }
-        })
-        .done(function() {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
-        });
 
-      }
-    });
-  </script>
 
 </div>

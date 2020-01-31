@@ -1,32 +1,50 @@
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+	<span>Categoría / <%= @event.category.name %> </span>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @event.photo %>
-</p>
+<div class="row">
+	<div class="col-sm-12 col-md-8">
+		<div>
 
-<p>
-  <strong>Start:</strong>
-  <%= @event.start %>
-</p>
+			<legend class="text-center">
+				<h1><%= @event.title %></h1>
+			</legend>
 
-<p>
-  <strong>End:</strong>
-  <%= @event.end %>
-</p>
+			<div class="text-center">
+					<strong>Fecha:
+						<%= @event.start.strftime("%d-%m-%Y")%>
+					</strong>
+          <div class="my-3 text-center">
+              <% if user_signed_in? && current_user.role == 'admin' %>
+                <!-- if  admin -->
+                    <%= link_to 'Editar Evento', edit_event_path(@event), class:'btn btn-sm btn-danger' %>
+                    <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-primary' %>
+              <% end %>
+          </div>
+			</div>
 
-<p>
-  <strong>Url:</strong>
-  <%= @event.url %>
-</p>
+		<div class="jumbotron">
+			<figure class="text-center mb-5">
+				<%= image_tag @event.photo.postimg, class:'img-fluid' %>
+			</figure>
+			<div class="container bg-light  p-5">
+					<%= @event.description.html_safe %>
+			</div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+		</div>
+
+	</div>
+
+	</div>
+
+	<div class="col-sm-12 col-md-4">
+		<%= render 'sidebar' %>
+	</div>
+</div>
+
+
+
+
+
+</div>

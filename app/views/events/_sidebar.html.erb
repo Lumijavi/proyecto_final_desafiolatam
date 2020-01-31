@@ -1,0 +1,15 @@
+<div class="mt-1 container-fluid">
+  <h2>Próximos Eventos</h2>
+  <table class="table mt-3">
+    <thead>
+      <th>Evento</th>
+      <th>Fecha</th>
+    </thead>
+    <% @nextevents.each do |event| %>
+      <tr>
+        <td><strong><%= link_to event.title, event%></strong></td>
+        <td><%= event.start.strftime("%d-%m-%Y") %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
