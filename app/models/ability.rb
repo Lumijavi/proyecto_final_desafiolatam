@@ -8,9 +8,9 @@ class Ability
     #
        user ||= User.new # guest user (not logged in)
        if user.admin?
-         can :manage, [Post, Event]
+         can :manage, [Post, Event, Tag, Category]
        else
-         can :read, :all
+         can :read, [Post, Event, Comment]
          can :create, Comment
          can :destroy, Comment, user_id: user.id
        end

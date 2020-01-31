@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :add_tag, :remove_tag]
+  #before_action :set_post, only: [:show, :edit, :update, :destroy, :add_tag, :remove_tag]
+  load_and_authorize_resource
 
   # GET /posts
   # GET /posts.json

@@ -98,44 +98,37 @@ events = Event.create([
     title: 'Kato sensei en Chile',
     start: '2019-08-30',
     end: '2019-09-01',
-    user: u,
     category: Category.first
   },
   {
     title: 'Campeonato Nacional por Equipos 2019',
     start: '2019-09-28',
-    user: u,
     category: Category.first
   },
   {
     title: 'CLAK 2020',
     start: '2020-05-21',
     end:'2020-05-24',
-    user: u,
     category: Category.first
   },
   {
     title: 'Campeonato Nacional Individual 2019',
     start: '2019-11-07',
-    user: u,
     category: Category.first
   },
   {
     title: 'Exámenes de Kendo 9 de diciembre 2019',
     start: '2019-11-08',
-    user: u,
     category: Category.first
   },
   {
     title: 'Campeonato Nacional Infantil-Juvenil 2019',
     start: '2019-11-14',
-    user: u,
     category: Category.first
   },
   {
     title: 'MIX TAIKAI: Copa Arcos Bodokan',
     start: '2019-11-14',
-    user: u,
     category: Category.first
   },
 ])
