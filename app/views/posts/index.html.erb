@@ -12,6 +12,9 @@
           <div class="card">
             <img src="<%= post.photo.postimg%>" class="card-img-top" alt="...">
             <div class="card-body">
+              <!-- poner categories acá -->
+              <small class="text-primary"><%= post.category.name.upcase %></small>
+
               <h5 class="card-title"><strong><%= post.title %></strong></h5>
               <p class="card-text"><%= strip_tags(post.description.html_safe.truncate(180, separator: /\s/))%> <%= link_to 'Leer más', post, class:'stretched-link'%></p>
               <div>

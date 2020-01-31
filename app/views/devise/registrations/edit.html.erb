@@ -1,3 +1,5 @@
+<div class="container">
+
 <div class="row">
 
   <div class="col-3"></div>
@@ -9,7 +11,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :email %><br/>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
     </div>
@@ -21,36 +23,36 @@
 
     <div class="row">
       <div class="col-6">
-        <div class="field">
+        <div class="form-group">
           <%= f.label :name, 'Nombre' %><br/>
           <%= f.text_field :name, autocomplete: "name", class: 'form-control' %>
         </div>
       </div>
 
       <div class="col-6">
-        <div class="field">
+        <div class="form-group">
           <%= f.label :surname, 'Apellido' %><br/>
           <%= f.text_field :surname, autocomplete: "surname", class: 'form-control' %>
         </div>
       </div>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :rut, 'RUT' %><br/>
       <%= f.text_field :rut, autocomplete: "rut", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :birthdate, 'Fecha de Nacimiento' %><br/>
       <%= f.date_field :birthdate, autocomplete: "birthdate", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :grading, 'Grado' %><br/>
       <%= f.text_field :grading, class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :password %>
       <i>(Déja este campo en blanco si no quieres cambiar tu password)</i><br/>
       <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
@@ -61,12 +63,12 @@
       <% end %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :password_confirmation, 'Confirma tu password' %><br/>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :current_password, 'Password actual' %>
       <i>(Ingresa tu password actual para confirmar los cambios)</i><br/>
       <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
@@ -107,4 +109,6 @@
   </div>
 
   <div class="col-3"></div>
+</div>
+
 </div>

@@ -1,5 +1,9 @@
 <div class="container">
-
+<span>
+	<a href="<%= category_path %>">Noticias</a>
+	/
+	<a href="/categories/<%= @post.category.id %>"><%= @post.category.name %></a>
+</span>
 <div class="row">
 	<div class="col-sm-12 col-md-8">
 		<div>
@@ -20,6 +24,11 @@
 			<div class="row my-3">
 
 				<div class="col-4">
+					<!-- if not admin -->
+					<% @post.tags.each do |tag| %>
+							<span class="badge badge-pill badge-light">/ # <%= tag.name %></span>
+					<% end %>
+						<!-- if  admin -->
 					<% @post.tags.each do |tag| %>
 						<a href="<%= remove_tag_post_path(@post, tag) %>" " data-method=" delete"="delete"">
 							<span class="badge badge-pill badge-light">/ # <%= tag.name %> <strong>X</strong></span>
@@ -55,7 +64,7 @@
 	</div>
 
 		<div class="jumbotron p-3 row">
-			<div class="col-md-4">
+			<div class="col-md-12">
 				<div class="card card-body bg-light">
 					<legend>Comentar:</legend>
 					<%= form_with(model: [@post, Comment.new], local: true, html: { class: 'form-horizontal' }) do |f| %>
@@ -71,7 +80,7 @@
 			<%= link_to 'Regresar', posts_path, class:'btn btn-outline-info' %>
 			</div>
 
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<% @comments.each do |comment| %>
 					<div class="card mb-3">
 						<div class="card-body">

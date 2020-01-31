@@ -7,6 +7,9 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
+# Use active admin for superuser ui}
+gem 'activeadmin'
+gem 'chartkick'
 # Use Carrierwave to manage upload of images
 gem 'carrierwave', '~> 2.0'
 # Use Mini Magick to hanlde images versions
