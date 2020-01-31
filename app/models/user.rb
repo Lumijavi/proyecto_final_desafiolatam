@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+enum role: [:visit, :admin]
+
 has_many :posts, dependent: :destroy
 has_many :comments, dependent: :destroy
 

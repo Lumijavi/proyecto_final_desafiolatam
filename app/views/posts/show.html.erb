@@ -21,32 +21,44 @@
 				</small>
 			</div>
 
-			<div class="row my-3">
+			<div class="row my-3 text-center">
 
-				<div class="col-4">
-					<!-- if not admin -->
-					<% @post.tags.each do |tag| %>
-							<span class="badge badge-pill badge-light">/ # <%= tag.name %></span>
-					<% end %>
+
+					<% if user_signed_in? && current_user.role == 'admin' %>
 						<!-- if  admin -->
-					<% @post.tags.each do |tag| %>
-						<a href="<%= remove_tag_post_path(@post, tag) %>" " data-method=" delete"="delete"">
-							<span class="badge badge-pill badge-light">/ # <%= tag.name %> <strong>X</strong></span>
-						</a>
-					<% end %>
-				</div>
+						<div class="col-4">
+							<% @post.tags.each do |tag| %>
+								<a href="<%= remove_tag_post_path(@post, tag) %>" "data-method="delete">
+									<span class="badge badge-pill badge-light">/ # <%= tag.name %> <strong>X</strong></span>
+								</a>
+							<% end %>
+						</div>
 
-				<div class="col-4">
-					<%= form_tag(add_tag_post_path(@post)) do %>
-						<%= label_tag :name, 'Agregar Tag:' %>
-						<%= text_field_tag "name" %>
-					<% end %>
-				</div>
+						<div class="col-4">
+							<%= form_tag(add_tag_post_path(@post)) do %>
+							<div class="form-group row">
+								<%= label_tag :name, 'Agregar Tag:', class: 'col-form-label' %>
+								<%= text_field_tag "name", "", class: 'form-control'  %>
+								</div>
+							<% end %>
+						</div>
 
-				<div class="col-4">
-					<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-sm btn-secondary' %>
-					<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-secondary' %>
-				</div>
+						<div class="col-4">
+								<%= link_to 'Editar Post', edit_post_path(@post), class:'btn btn-sm btn-danger' %>
+								<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-primary' %>
+						</div>
+
+					<% else %>
+						<!-- if not admin -->
+						<div class="text-center">
+							<% @post.tags.each do |tag| %>
+									<span class="badge badge-pill badge-light"> # <%= tag.name %></span>
+							<% end %>
+						</div>
+					<% end %>
+
+
+
 
 			</div>
 
@@ -64,6 +76,7 @@
 	</div>
 
 		<div class="jumbotron p-3 row">
+			<% if user_signed_in? %>
 			<div class="col-md-12">
 				<div class="card card-body bg-light">
 					<legend>Comentar:</legend>
@@ -77,8 +90,8 @@
 					<% end %>
 				</div>
 			</br>
-			<%= link_to 'Regresar', posts_path, class:'btn btn-outline-info' %>
 			</div>
+			<% end %>
 
 			<div class="col-md-12">
 				<% @comments.each do |comment| %>
@@ -90,11 +103,11 @@
 										<strong><%= comment.user.name %>:</strong>
 										<%= comment.content %></p>
 								</div>
-								<%# if can? :destroy, comment %>
+								<% if can? :destroy, comment %>
 									<div class="col-3">
 										<%= link_to 'X Eliminar', post_comment_path(@post,comment), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-sm btn-danger' %>
 									</div>
-								<%# end %>
+								<% end %>
 							</div>
 						</div>
 						<div class="card-footer text-muted">

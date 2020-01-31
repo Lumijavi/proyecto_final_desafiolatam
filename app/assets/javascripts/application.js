@@ -24,6 +24,6 @@
 //= require alertify
 //= require rails-ujs
 //= require alertify/confirm-ujs
+//= stub "active_admin"
 //= require turbolinks
 //= require_tree .
-//= stub "active_admin"

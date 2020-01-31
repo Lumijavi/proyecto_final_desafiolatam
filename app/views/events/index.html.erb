@@ -1,10 +1,14 @@
 <div class="container">
-    
+
   <h1>Events</h1>
 
-  <%= link_to 'New Event', new_event_path, class:'btn btn-secondary' %>
+  <% if user_signed_in? && current_user == 'admin' %>
+    <%= link_to 'New Event', new_event_path, class:'btn btn-secondary' %>
+  <% end %>
 
+<div class="container">
   <div id="calendar"></div>
+</div>
 
   <%= render 'modal' %>
 

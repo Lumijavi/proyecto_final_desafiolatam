@@ -10,7 +10,7 @@ ActiveAdmin.register User do
   # or
   #
   permit_params do
-     permitted = [:email, :password]
+     permitted = [:email, :password, :role]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   end
@@ -20,13 +20,14 @@ ActiveAdmin.register User do
     column :name
     column :email
     column :created_at
-
+    column :role
     actions
   end
 
   form do |f|
     inputs 'Datos de Usuario' do
     input :email
+    input :role
     input :password
     end
     actions
