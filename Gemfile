@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.7'
 gem 'activeadmin'
 gem 'chartkick'
 # Use Carrierwave to manage upload of images
+gem 'fog-aws'
 gem 'carrierwave', '~> 2.0'
 # Use Mini Magick to hanlde images versions
 gem 'mini_magick'
