@@ -12,7 +12,7 @@ gem 'activeadmin'
 gem 'chartkick'
 # Use Carrierwave to manage upload of images
 gem 'fog-aws'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 # Use Mini Magick to hanlde images versions
 gem 'mini_magick'
 # Use Alertify to simplify alert messages
